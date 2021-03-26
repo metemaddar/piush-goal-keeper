@@ -1,0 +1,34 @@
+{% extends 'targets/base.html' %}
+{% block content %}
+
+<h1 class="text-center">My Goals</h1>
+<div class="row">
+    {% for goal in goals %}
+    <div class="col-lg-3">
+        <div class="p-4">
+            <img class="" src="{{goal.picture.url}}" alt="{{goal.name}}">
+            <h2>{{goal.name}}</h2>
+            <div class="progress" style="height: 20px;">
+                <div class="progress-bar bg-info" role="progressbar" aria-valuenow="{{goal.reach_percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{goal.reach_percentage}}%;">{{goal.reach_percentage}}%</div>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Reach</th>
+                    <th scope="col">Of</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{goal.reach}} {{goal.unit|title}}</td>
+                    <td>{{goal.quantity}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
